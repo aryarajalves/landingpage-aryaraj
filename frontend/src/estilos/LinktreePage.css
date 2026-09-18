@@ -3,15 +3,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
+  justify-content: space-between;
+  padding: 40px 0 0 0;
   position: relative;
   background: var(--grad-warm);
+  width: 100%;
 }
 
 .linktree-card {
-  width: 100%;
+  width: calc(100% - 32px);
   max-width: 480px;
+  margin: 0 auto;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
