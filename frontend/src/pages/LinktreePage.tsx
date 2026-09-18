@@ -52,12 +52,12 @@ const LinktreePage: React.FC<LinktreePageProps> = ({ onNavigate }) => {
           {/* 1. API Oficial do WhatsApp */}
           <a
             href="/apioficial"
-            className="linktree-btn linktree-btn-main"
+            className="linktree-btn"
             onClick={handleNavigateToApiOficial}
             data-testid="linktree-btn-apioficial"
           >
             <div className="linktree-btn-content">
-              <div className="linktree-btn-icon">
+              <div className="linktree-btn-icon" style={{ color: '#059669' }}>
                 <ShieldCheck size={24} />
               </div>
               <div className="linktree-btn-text">
