@@ -42,4 +42,26 @@ describe('Componente Faq', () => {
     expect(screen.getByText(/aumentar expressivamente o seu limite de disparos diários de templates/i)).toBeInTheDocument();
     expect(screen.getByText(/verificação oficial da sua BM/i)).toBeInTheDocument();
   });
+
+  it('deve renderizar as novas perguntas sobre integracao de vendas, ZapJords e prazo de ate 7 dias uteis', () => {
+    render(<Faq />);
+    
+    // Pergunta 4: Integração de vendas
+    expect(screen.getByText(/Consigo integrar com a minha plataforma de vendas/i)).toBeInTheDocument();
+    const salesBtn = screen.getByTestId('faq-btn-4');
+    fireEvent.click(salesBtn);
+    expect(screen.getByText(/Fornecemos integração via Webhooks e endpoints prontos/i)).toBeInTheDocument();
+
+    // Pergunta 5: ZapJords e programação
+    expect(screen.getByText(/Preciso saber programar para usar a ZapJords/i)).toBeInTheDocument();
+    const codeBtn = screen.getByTestId('faq-btn-5');
+    fireEvent.click(codeBtn);
+    expect(screen.getByText(/Não precisa saber nada de programação/i)).toBeInTheDocument();
+
+    // Pergunta 6: Prazo de até 7 dias úteis
+    expect(screen.getByText(/Quanto tempo leva para a infraestrutura estar 100% ativa/i)).toBeInTheDocument();
+    const timeBtn = screen.getByTestId('faq-btn-6');
+    fireEvent.click(timeBtn);
+    expect(screen.getByText(/em um prazo de até 7 dias úteis/i)).toBeInTheDocument();
+  });
 });

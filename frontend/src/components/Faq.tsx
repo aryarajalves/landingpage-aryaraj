@@ -24,6 +24,18 @@ export default function Faq() {
     {
       question: "Como funciona a entrega do serviço de homologação?",
       answer: "Nossa equipe fará toda a instalação e configuração da API Oficial para a sua empresa, mas precisaremos da sua cooperação com alguns itens fundamentais para a entrega: (1) compartilhamento de acesso à sua BM (Business Manager); (2) disponibilização de 1 número de WhatsApp exclusivo para a API; (3) contratação de 1 servidor na Hostinger para hospedarmos as ferramentas necessárias; e (4) realização da verificação de empresa da sua BM (Meta), garantindo que o limite de disparos diários seja ampliado para que você realize seus lançamentos com segurança."
+    },
+    {
+      question: "Consigo integrar com a minha plataforma de vendas (Kiwify, Hotmart, Eduzz, ActiveCampaign)?",
+      answer: "Sim! Fornecemos integração via Webhooks e endpoints prontos para conectar instantaneamente aos principais checkouts e CRMs do mercado. Assim você automatiza mensagens de carrinho abandonado, PIX gerado, boleto impresso e aprovação de compras em segundos."
+    },
+    {
+      question: "Preciso saber programar para usar a ZapJords e disparar as mensagens?",
+      answer: "Não precisa saber nada de programação. A plataforma ZapJords foi desenvolvida com interface 100% visual e intuitiva (no-code). Você cria templates, monta funis arrastando blocos, sobe listas em planilha e gerencia atendimentos em poucos cliques. Além disso, entregamos um treinamento prático com você e sua equipe."
+    },
+    {
+      question: "Quanto tempo leva para a infraestrutura estar 100% ativa e pronta para disparar?",
+      answer: "Com o envio das informações necessárias (servidor Hostinger e acesso à BM), realizamos todo o setup técnico, instalação das ferramentas e homologação junto à Meta em um prazo de até 7 dias úteis, entregando a operação pronta e testada."
     }
   ];
 
