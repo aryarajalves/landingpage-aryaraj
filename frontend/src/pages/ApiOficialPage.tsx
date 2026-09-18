@@ -5,6 +5,7 @@ import IntegrationsBar from '../components/IntegrationsBar';
 import Features from '../components/Features';
 import UseCases from '../components/UseCases';
 import WhatIsIncluded from '../components/WhatIsIncluded';
+import ZapJordsShowcase from '../components/ZapJordsShowcase';
 import ComparisonTable from '../components/ComparisonTable';
 import PricingMeta from '../components/PricingMeta';
 import RoiHook from '../components/RoiHook';
@@ -47,6 +48,7 @@ const ApiOficialPage: React.FC = () => {
         <Features />
         <UseCases />
         <WhatIsIncluded />
+        <ZapJordsShowcase />
         <ComparisonTable />
         <PricingMeta />
         <RoiHook />

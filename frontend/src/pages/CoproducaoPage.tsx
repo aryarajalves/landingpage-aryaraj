@@ -23,6 +23,7 @@ import { trackClick } from '../utils/tracking';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
 import About from '../components/About';
 import Footer from '../components/Footer';
+import ZapJordsShowcase from '../components/ZapJordsShowcase';
 
 interface CoFaqItem {
   question: string;
@@ -356,6 +357,9 @@ const CoproducaoPage: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Demonstração Real da Ferramenta ZapJords Por Dentro */}
+      <ZapJordsShowcase />
 
       {/* Quem está por trás */}
       <div id="sobre">
