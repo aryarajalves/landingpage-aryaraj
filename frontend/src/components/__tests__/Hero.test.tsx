@@ -41,4 +41,41 @@ describe('Componente Hero', () => {
     expect(screen.getByText(/realizado pessoalmente por Aryaraj/i)).toBeInTheDocument();
     expect(screen.getByText(/aceitamos apenas 10 novos setups/i)).toBeInTheDocument();
   });
+
+  it('deve renderizar o template inicial com vídeo e convite para aula ao vivo no celular', () => {
+    render(<Hero />);
+    expect(screen.getByText(/Disparo de Lançamento/i)).toBeInTheDocument();
+    expect(screen.getByText(/AULA EXCLUSIVA: Como Escalar Infoprodutos em 2026/i)).toBeInTheDocument();
+    expect(screen.getByText(/A nossa aula ao vivo e gratuita já começou!/i)).toBeInTheDocument();
+    expect(screen.getByText(/Entrar na Aula Ao Vivo 🔴/i)).toBeInTheDocument();
+  });
+
+  it('deve alternar para outros templates (recuperação de carrinho) ao clicar no botão de avançar', () => {
+    const trackSpy = vi.spyOn(tracking, 'trackClick').mockImplementation(() => {});
+    render(<Hero />);
+
+    const nextBtn = screen.getByRole('button', { name: /Próximo template/i });
+    expect(nextBtn).toBeInTheDocument();
+
+    fireEvent.click(nextBtn);
+    expect(trackSpy).toHaveBeenCalledWith('hero_phone_next_template');
+
+    // Verifica que mudou para o template de carrinho abandonado
+    expect(screen.getByText(/Recuperação de Carrinho/i)).toBeInTheDocument();
+    expect(screen.getByText(/quase garantiu sua vaga na formação/i)).toBeInTheDocument();
+    expect(screen.getByText(/Finalizar Minha Inscrição 🛒/i)).toBeInTheDocument();
+
+    // Avança mais um para PIX pendente
+    fireEvent.click(nextBtn);
+    expect(screen.getByText(/Recuperação de PIX/i)).toBeInTheDocument();
+    expect(screen.getByText(/Copiar Chave PIX ⚡/i)).toBeInTheDocument();
+
+    // Clica no botão anterior para voltar para carrinho
+    const prevBtn = screen.getByRole('button', { name: /Template anterior/i });
+    fireEvent.click(prevBtn);
+    expect(trackSpy).toHaveBeenCalledWith('hero_phone_prev_template');
+    expect(screen.getByText(/Recuperação de Carrinho/i)).toBeInTheDocument();
+
+    trackSpy.mockRestore();
+  });
 });
