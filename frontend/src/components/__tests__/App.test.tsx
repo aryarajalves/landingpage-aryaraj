@@ -23,6 +23,7 @@ describe('Componente Principal App e Roteamento', () => {
 
     render(<App />);
     expect(screen.getByTestId('linktree-page')).toBeInTheDocument();
+    expect(document.title).toBe('Serviços');
     expect(screen.getAllByText(/Aryaraj/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Serviços/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Desenvolvemos Tecnologia para o seu projeto de infoproduto/i)).toBeInTheDocument();

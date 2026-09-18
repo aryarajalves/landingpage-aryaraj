@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../estilos/LinktreePage.css';
 import { MessageSquareCode, ArrowRight, ShieldCheck, Bot, Smartphone, Handshake } from 'lucide-react';
 import { trackClick } from '../utils/tracking';
@@ -8,6 +8,10 @@ interface LinktreePageProps {
 }
 
 const LinktreePage: React.FC<LinktreePageProps> = ({ onNavigate }) => {
+  useEffect(() => {
+    document.title = 'Serviços';
+  }, []);
+
   const handleNavigateToApiOficial = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     trackClick('linktree_btn_apioficial');
