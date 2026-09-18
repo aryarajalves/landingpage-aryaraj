@@ -19,7 +19,7 @@ export default function Faq() {
     },
     {
       question: "Preciso de um CNPJ para utilizar a API Oficial?",
-      answer: "Sim. A Meta exige um CNPJ ativo para verificar a conta comercial da empresa (Facebook Business Manager). Essa verificação garante a legitimidade do número. Vale destacar que toda conta nova começa com um limite inicial de disparos diários estabelecido pela Meta (geralmente de 250 a 1.000 conversas ativas por dia), o qual aumenta gradativamente conforme a conta é aquecida e a empresa segue as boas práticas."
+      answer: "Para iniciar não é obrigatório ter um CNPJ. No entanto, é de extrema importância que você tenha, pois é através do CNPJ que realizamos a verificação oficial da sua BM (Business Manager) junto à Meta. Essa verificação é o que permite aumentar expressivamente o seu limite de disparos diários de templates, garantindo que você consiga escalar seus lançamentos e disparos para listas de milhares de contatos com total segurança."
     },
     {
       question: "Como funciona a entrega do serviço de homologação?",

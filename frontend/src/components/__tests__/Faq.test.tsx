@@ -28,4 +28,18 @@ describe('Componente Faq', () => {
     fireEvent.click(button);
     expect(itemContainer.className).not.toContain('active');
   });
+
+  it('deve conter a pergunta sobre CNPJ esclarecendo que não é obrigatório para iniciar mas amplia limites de disparos', () => {
+    render(<Faq />);
+    expect(screen.getByText('Preciso de um CNPJ para utilizar a API Oficial?')).toBeInTheDocument();
+    
+    // Abre a pergunta sobre CNPJ (índice 2)
+    const cnpjBtn = screen.getByTestId('faq-btn-2');
+    fireEvent.click(cnpjBtn);
+
+    expect(screen.getByText(/Para iniciar não é obrigatório ter um CNPJ/i)).toBeInTheDocument();
+    expect(screen.getByText(/de extrema importância que você tenha/i)).toBeInTheDocument();
+    expect(screen.getByText(/aumentar expressivamente o seu limite de disparos diários de templates/i)).toBeInTheDocument();
+    expect(screen.getByText(/verificação oficial da sua BM/i)).toBeInTheDocument();
+  });
 });
