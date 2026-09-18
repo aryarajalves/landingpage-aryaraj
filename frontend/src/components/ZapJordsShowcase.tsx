@@ -59,7 +59,7 @@ export default function ZapJordsShowcase() {
       label: 'Criação de Templates',
       badge: 'Aprovação Meta',
       title: 'Gerenciador e Editor de Templates Homologados',
-      description: 'Crie e envie templates de Marketing, Utilidade ou Autenticação diretamente para aprovação da Meta. Suporte completo para cabeçalhos com vídeo, imagem, documentos, variáveis dinâmicas e botões de CTA.',
+      description: 'Crie e envie templates de Marketing e Utilidade diretamente para aprovação da Meta. Suporte completo para cabeçalhos com vídeo, imagem, documentos, variáveis dinâmicas e botões de CTA.',
       image: '/zapjords_templates.png',
       icon: <FileText size={18} />,
       highlights: [
