@@ -1,0 +1,48 @@
+name: landingpage-aryaraj
+
+services:
+  web:
+    build:
+      context: ../frontend
+      dockerfile: ../Docker/Dockerfile
+    container_name: landing_page_frotend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - VITE_API_URL=http://localhost:8001
+
+  api:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: landing_page_backend
+    ports:
+      - "8001:8000"
+    volumes:
+      - ../backend:/app
+    env_file:
+      - ../backend/.env
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15-alpine
+    container_name: landing_page_db
+    restart: always
+    environment:
+      POSTGRES_USER: aryaraj_admin
+      POSTGRES_PASSWORD: aryaraj_password
+      POSTGRES_DB: aryaraj_stats
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

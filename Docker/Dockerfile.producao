@@ -1,0 +1,37 @@
+# --- Estágio 1: Compilação do Frontend React ---
+FROM node:20-alpine AS frontend-builder
+
+WORKDIR /app
+
+COPY frontend/package*.json ./
+
+RUN npm install
+
+COPY frontend/ .
+
+# Injeta a URL da API em tempo de compilação (deixando vazia "" para chamadas relativas no mesmo domínio)
+ARG VITE_API_URL=""
+ENV VITE_API_URL=$VITE_API_URL
+
+RUN npm run build
+
+# --- Estágio 2: Execução do Backend e Servidor FastAPI ---
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copia e instala as dependências do backend
+COPY backend/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia os arquivos do backend para a raiz do container
+COPY backend/ .
+
+# Copia a pasta estática dist gerada pelo frontend no estágio anterior
+COPY --from=frontend-builder /app/dist ./dist
+
+# Expõe a porta que o Uvicorn rodará
+EXPOSE 8000
+
+# Executa o Uvicorn (rodando o backend que também serve o frontend)
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

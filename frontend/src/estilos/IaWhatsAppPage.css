@@ -1,0 +1,429 @@
+/* =========================================
+   IaWhatsAppPage.css — Estilos da Landing Page de IA no WhatsApp
+   ========================================= */
+
+.ia-page {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #fdfbf7;
+  color: #1c1917;
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+/* Header Navbar da página de IA */
+.ia-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(253, 251, 247, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(217, 119, 6, 0.12);
+  padding: 14px 0;
+}
+
+.ia-nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ia-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.ia-brand-icon-box {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.ia-brand-text h3 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0;
+  color: #111827;
+}
+
+.ia-brand-text span {
+  font-size: 0.75rem;
+  color: #7c3aed;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ia-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.ia-nav-link {
+  color: #57534e;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: color 0.2s ease;
+}
+
+.ia-nav-link:hover {
+  color: #7c3aed;
+}
+
+/* Hero de IA */
+.ia-hero-section {
+  padding: 60px 0 80px;
+}
+
+.ia-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.ia-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f5f3ff;
+  border: 1px solid #ddd6fe;
+  color: #6d28d9;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+}
+
+.ia-hero-title {
+  font-size: 3.2rem;
+  line-height: 1.15;
+  font-weight: 800;
+  color: #1c1917;
+  margin-bottom: 20px;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #7c3aed 0%, #059669 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.ia-hero-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: #57534e;
+  margin-bottom: 36px;
+}
+
+.ia-hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.btn-ia-primary {
+  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+  color: #ffffff;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-ia-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.45);
+  color: #ffffff;
+}
+
+.btn-ia-outline {
+  background: #ffffff;
+  border: 1.5px solid #ddd6fe;
+  color: #6d28d9;
+  padding: 14px 26px;
+  border-radius: 9999px;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.btn-ia-outline:hover {
+  background: #f5f3ff;
+  border-color: #7c3aed;
+  transform: translateY(-2px);
+}
+
+/* Simulador de Chat com IA */
+.ia-phone-card {
+  max-width: 310px;
+  margin: 0 auto;
+  border: 7px solid #1e1b4b;
+  border-radius: 30px;
+  background: #0f172a;
+  box-shadow: 0 16px 36px -8px rgba(124, 58, 237, 0.22), 0 8px 20px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.ia-phone-header {
+  background: #1e1b4b;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ia-phone-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed 0%, #059669 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.ia-phone-chat-body {
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background-color: #efeae2;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 0);
+  background-size: 16px 16px;
+  max-height: 440px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+.ia-phone-chat-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.ia-phone-chat-body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+
+.ia-bubble {
+  max-width: 90%;
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 0.76rem;
+  line-height: 1.35;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.ia-bubble p {
+  margin: 0;
+  font-weight: 500;
+}
+
+.ia-bubble-lead {
+  align-self: flex-end;
+  background: #d9fdd3;
+  color: #111b21;
+  border: 1px solid #c7f2be;
+  border-top-right-radius: 2px;
+}
+
+.ia-bubble-agent {
+  align-self: flex-start;
+  background: #ffffff;
+  color: #111b21;
+  border: 1px solid #e2e8f0;
+  border-top-left-radius: 2px;
+}
+
+.ia-bubble-time {
+  font-size: 0.58rem;
+  color: #667781;
+  text-align: right;
+  margin-top: 3px;
+  display: block;
+}
+
+.ia-system-badge {
+  align-self: center;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  font-size: 0.65rem;
+  padding: 3px 8px;
+  border-radius: 9999px;
+  font-weight: 600;
+  margin: 2px 0;
+}
+
+/* Seções de Recursos e Pilares */
+.ia-features-section {
+  padding: 80px 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(217, 119, 6, 0.08);
+  border-bottom: 1px solid rgba(217, 119, 6, 0.08);
+}
+
+.ia-section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 50px;
+}
+
+.ia-section-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  color: #1c1917;
+  margin-bottom: 14px;
+}
+
+.ia-section-subtitle {
+  font-size: 1.05rem;
+  color: #57534e;
+  line-height: 1.6;
+}
+
+.ia-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.ia-card {
+  background: #ffffff;
+  border: 1px solid rgba(217, 119, 6, 0.16);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.ia-card:hover {
+  transform: translateY(-4px);
+  border-color: #7c3aed;
+  box-shadow: 0 14px 28px rgba(124, 58, 237, 0.1);
+}
+
+.ia-card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  background: #f5f3ff;
+  color: #7c3aed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.ia-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.ia-card-desc {
+  font-size: 0.95rem;
+  color: #57534e;
+  line-height: 1.55;
+}
+
+/* Seção Onboarding & Dados da Empresa */
+.ia-onboarding-section {
+  padding: 80px 0;
+  background: #fffbeb;
+  border-bottom: 1px solid #fde68a;
+}
+
+.ia-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.ia-step-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  border: 1px solid #fcd34d;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.06);
+  position: relative;
+}
+
+.ia-step-number {
+  position: absolute;
+  top: -14px;
+  left: 20px;
+  background: #d97706;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 2px 10px;
+  border-radius: 9999px;
+}
+
+/* CTA Final */
+.ia-cta-section {
+  padding: 90px 0;
+  background: linear-gradient(180deg, #fdfbf7 0%, #f5f3ff 100%);
+  text-align: center;
+}
+
+.ia-cta-box {
+  max-width: 760px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 50px 36px;
+  border: 1.5px solid #ddd6fe;
+  box-shadow: 0 20px 40px rgba(124, 58, 237, 0.12);
+}
+
+@media (max-width: 992px) {
+  .ia-hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .ia-badge {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ia-hero-ctas {
+    justify-content: center;
+  }
+  .ia-hero-title {
+    font-size: 2.4rem;
+  }
+}

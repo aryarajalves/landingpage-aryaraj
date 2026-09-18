@@ -1,0 +1,254 @@
+/* Google Fonts: Outfit for titles and Inter for text */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* Colors - Tema vivo, quente e elegante inspirado na imagem 02 (ISKCON Ceará) */
+  --bg-primary: #fdfbf7;
+  --bg-secondary: #faf4e8;
+  --bg-card: rgba(255, 255, 255, 0.90);
+  --text-primary: #1c1917;
+  --text-secondary: #57534e;
+  --color-violet: #7c3aed;
+  --color-cyan: #0284c7;
+  --color-amber: #d97706;
+  --color-amber-dark: #b45309;
+  --color-amber-light: #fef3c7;
+  --color-amber-border: #fcd34d;
+  --color-whatsapp: #059669;
+  --color-whatsapp-dark: #047857;
+  --border-color: rgba(217, 119, 6, 0.16);
+  
+  /* Gradients */
+  --grad-primary: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+  --grad-accent: linear-gradient(135deg, #d97706 0%, #059669 100%);
+  --grad-warm: linear-gradient(180deg, #fdfbf7 0%, #fff8ee 35%, #fdf6ec 70%, #faf1e4 100%);
+  
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-title: 'Outfit', sans-serif;
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #fdfbf7;
+  background-image: var(--grad-warm);
+  min-height: 100vh;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/* Base styles for #root to support full-width modern layout */
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Typography */
+h1, h2, h3, h4 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+p {
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Glassmorphism utility - Tema claro acolhedor */
+.glass {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px) saturate(120%);
+  -webkit-backdrop-filter: blur(16px) saturate(120%);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(217, 119, 6, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+  border: none;
+  gap: 8px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(217, 119, 6, 0.25);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(180, 83, 9, 0.4);
+  background: linear-gradient(135deg, #b45309 0%, #78350f 100%);
+  color: #ffffff;
+}
+
+.btn-whatsapp {
+  background-color: var(--color-whatsapp);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25);
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+  background-color: var(--color-whatsapp-dark);
+  color: #ffffff;
+}
+
+.btn-outline {
+  background: #ffffff;
+  border: 1.5px solid var(--color-amber-border);
+  color: #92400e;
+  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.06);
+}
+
+.btn-outline:hover {
+  background: var(--color-amber-light);
+  border-color: var(--color-amber);
+  color: #78350f;
+  transform: translateY(-2px);
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Main background decorative glows */
+.glow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.glow-purple {
+  position: absolute;
+  top: 5%;
+  left: 10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(90px);
+  border-radius: 50%;
+}
+
+.glow-cyan {
+  position: absolute;
+  top: 35%;
+  right: 5%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(251, 146, 60, 0.10) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(90px);
+  border-radius: 50%;
+}
+
+.glow-green {
+  position: absolute;
+  bottom: 10%;
+  left: 15%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
+  filter: blur(90px);
+  border-radius: 50%;
+}
+
+/* Layout utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 60px;
+  font-size: 1.1rem;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.03);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .btn {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+  }
+}

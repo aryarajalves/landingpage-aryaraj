@@ -1,0 +1,147 @@
+/* =========================================
+   About.css — Estilos do componente About
+   ========================================= */
+
+.about-section {
+  overflow: hidden;
+  position: relative;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.about-layout-inner {
+  padding: 30px;
+  border-radius: 24px;
+}
+
+.about-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e7e5e4;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.about-avatar-glow {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #fcd34d 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(217, 119, 6, 0.25);
+  font-family: var(--font-title);
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  overflow: hidden;
+}
+
+.about-avatar-glow img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-profile-info {
+  margin-top: 16px;
+}
+
+.about-profile-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.about-profile-role {
+  font-size: 0.88rem;
+  color: #d97706;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.about-profile-location {
+  font-size: 0.8rem;
+  color: #78716c;
+  margin-top: 2px;
+}
+
+.about-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.about-badge-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.about-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-title {
+  font-size: 1.8rem;
+  color: #1c1917;
+  font-weight: 700;
+}
+
+.about-highlight-sentence {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: #1c1917;
+  font-weight: 600;
+  border-left: 4px solid #d97706;
+  padding-left: 16px;
+}
+
+.about-p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.about-footer-row {
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+@media (max-width: 992px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-visual {
+    padding: 24px;
+  }
+}

@@ -1,0 +1,168 @@
+/* =========================================
+   RoiHook.css — Estilos do componente RoiHook
+   ========================================= */
+
+.roi-section {
+  position: relative;
+}
+
+.roi-box {
+  border: 2px solid rgba(217, 119, 6, 0.3);
+  box-shadow: 0 10px 30px rgba(217, 119, 6, 0.08);
+  border-radius: 24px;
+  padding: 48px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.roi-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.roi-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 16px;
+  color: #1c1917;
+}
+
+.roi-subtitle {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: #57534e;
+}
+
+.roi-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.roi-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.roi-col-title-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.roi-col-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #1c1917;
+}
+
+.roi-col-title-danger {
+  color: #b91c1c;
+}
+
+.roi-col-desc {
+  font-size: 0.9rem;
+  color: #57534e;
+}
+
+.roi-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.roi-card-item {
+  padding: 16px 20px;
+  border-radius: 12px;
+  border: 1px solid #e7e5e4;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #292524;
+}
+
+.roi-card-item-vps {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.roi-card-price-danger {
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.roi-card-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.roi-card-price-accent {
+  font-weight: 700;
+  color: #059669;
+}
+
+.roi-footnote {
+  font-size: 0.82rem;
+  color: #78716c;
+  font-style: italic;
+}
+
+.roi-savings-banner {
+  background: #fef3c7;
+  border: 1.5px dashed #f59e0b;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.12);
+}
+
+.roi-savings-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: #78350f;
+}
+
+.roi-savings-desc {
+  font-size: 0.92rem;
+  color: #92400e;
+  max-width: 600px;
+  margin: 0;
+}
+
+.roi-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+@media (max-width: 992px) {
+  .roi-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .roi-box {
+    padding: 32px 20px;
+  }
+
+  .roi-title {
+    font-size: 1.75rem;
+  }
+}

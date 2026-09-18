@@ -1,0 +1,619 @@
+/* ============================================================
+   AdminPanel.css
+   Estilos do painel administrativo de estatísticas
+   ============================================================ */
+
+/* ── Wrapper externo de Login ─────────────────────────────── */
+.admin-login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding: 20px;
+}
+
+/* ── Card de Login ────────────────────────────────────────── */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139, 92, 246, 0.05);
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 8px;
+  font-family: var(--font-title);
+}
+
+.login-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* ── Campos de Input ──────────────────────────────────────── */
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.input-field-wrapper {
+  position: relative;
+}
+
+.input-field-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+}
+
+.input-field {
+  width: 100%;
+  padding: 14px 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02);
+  color: white;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all var(--transition-normal);
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: var(--color-violet);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ── Botão de Toggle de Senha ─────────────────────────────── */
+.toggle-password-btn {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+/* ── Botão de Submit do Login ─────────────────────────────── */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--grad-primary);
+  color: #030712;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 1rem;
+  transition: all var(--transition-normal);
+}
+
+.login-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+}
+
+.login-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ── Mensagem de Erro do Login ────────────────────────────── */
+.error-msg {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* ── Wrapper principal do Dashboard ──────────────────────── */
+.admin-panel-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+  padding-bottom: 60px;
+}
+
+/* ── Barra de Navegação do Admin ─────────────────────────── */
+.admin-nav {
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(11, 15, 25, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 0;
+}
+
+.nav-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-title {
+  font-family: var(--font-title);
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin: 0;
+}
+
+/* ── Botão de Logout ─────────────────────────────────────── */
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.05);
+  color: #f87171;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: all var(--transition-normal);
+}
+
+.logout-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+/* ── Cabeçalho do Dashboard ──────────────────────────────── */
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.dashboard-header-title {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin: 0;
+  font-family: var(--font-title);
+}
+
+.dashboard-header-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+/* ── Seletor de Período ──────────────────────────────────── */
+.period-selector {
+  display: flex;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 4px;
+}
+
+.period-btn {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.period-btn.active {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--color-cyan);
+}
+
+/* ── Cards de Resumo Estatístico ─────────────────────────── */
+.stats-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  padding: 30px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.stat-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon-wrapper--cyan {
+  background-color: rgba(6, 182, 212, 0.08);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.stat-icon-wrapper--violet {
+  background-color: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.stat-icon-wrapper--green {
+  background-color: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.stat-icon--cyan {
+  color: var(--color-cyan);
+}
+
+.stat-icon--violet {
+  color: var(--color-violet);
+}
+
+.stat-icon--green {
+  color: #10b981;
+}
+
+.stat-meta {
+  flex: 1;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.stat-value {
+  font-size: 1.85rem;
+  font-weight: 800;
+  margin: 0;
+  font-family: var(--font-title);
+}
+
+.stat-value--green {
+  color: #10b981;
+}
+
+.stat-sub {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  margin-bottom: 0;
+}
+
+/* ── Grade de Gráficos ───────────────────────────────────── */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+
+/* ── Caixa de Gráfico (Histórico) ────────────────────────── */
+.chart-box {
+  padding: 30px;
+  border-radius: 20px;
+  min-height: 400px;
+}
+
+.chart-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.refresh-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.refresh-btn:hover {
+  color: var(--color-cyan);
+}
+
+/* ── Visualizador de Barras do Gráfico ───────────────────── */
+.chart-visual-wrapper {
+  position: relative;
+  height: 250px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+
+.chart-bar-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.chart-bar-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 4px;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.chart-bar {
+  width: 70%;
+  border-radius: 6px 6px 0 0;
+  transition: height 0.5s ease-out;
+  min-height: 4px;
+  position: relative;
+}
+
+.chart-bar--cyan {
+  background-color: rgba(6, 182, 212, 0.45);
+  border: 1px solid var(--color-cyan);
+}
+
+.chart-bar--violet {
+  background-color: rgba(139, 92, 246, 0.45);
+  border: 1px solid var(--color-violet);
+}
+
+.chart-bar:hover .chart-tooltip {
+  display: block;
+}
+
+.chart-tooltip {
+  display: none;
+  position: absolute;
+  top: -36px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111827;
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.chart-bar-label {
+  font-size: 0.65rem;
+  color: var(--text-secondary);
+  margin-top: 8px;
+  text-align: center;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Estado Vazio / Loading do Gráfico ───────────────────── */
+.chart-empty-state {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ── Legenda do Gráfico ──────────────────────────────────── */
+.chart-legend {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  justify-content: center;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chart-legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.chart-legend-dot--cyan {
+  background-color: var(--color-cyan);
+}
+
+.chart-legend-dot--violet {
+  background-color: var(--color-violet);
+}
+
+.chart-legend-label {
+  color: var(--text-secondary);
+}
+
+/* ── Caixa de Distribuição (Cliques por Botão) ───────────── */
+.distribution-box {
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.dist-item {
+  margin-bottom: 20px;
+}
+
+.dist-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
+}
+
+.dist-btn-name {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dist-btn-count {
+  color: var(--text-secondary);
+}
+
+.dist-progress-bar {
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.dist-progress-fill {
+  height: 100%;
+  border-radius: 9999px;
+  background: var(--grad-primary);
+}
+
+/* ── Estado Vazio da Distribuição ────────────────────────── */
+.dist-empty-state {
+  padding: 40px 0;
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ── Modal de Confirmação de Logout ─────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 400px;
+  padding: 32px;
+  border-radius: 24px;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: var(--bg-card);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(239, 68, 68, 0.05);
+  text-align: center;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-title);
+}
+
+.modal-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.modal-btn-confirm {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.modal-btn-confirm:hover {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: rgba(239, 68, 68, 0.5);
+}
+
+.modal-btn-cancel {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.modal-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--text-secondary);
+}
+
+/* ── Responsividade ──────────────────────────────────────── */
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
