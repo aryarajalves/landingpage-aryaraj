@@ -20,6 +20,7 @@ import { WHATSAPP_LINK } from '../config';
 import { trackClick } from '../utils/tracking';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
 import About from '../components/About';
+import Footer from '../components/Footer';
 
 interface AppFaqItem {
   question: string;
@@ -359,10 +360,8 @@ const AppsInfoprodutoPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ padding: '24px 0', textAlign: 'center', color: '#78716c', fontSize: '0.85rem', borderTop: '1px solid #e5e7eb' }}>
-        <p>Aryaraj Serviços © {new Date().getFullYear()} • Tecnologia para Infoprodutos e Negócios Digitais</p>
-      </footer>
+      {/* Rodapé Oficial Padronizado */}
+      <Footer />
 
       {/* Floating CTA WhatsApp */}
       <FloatingWhatsApp 

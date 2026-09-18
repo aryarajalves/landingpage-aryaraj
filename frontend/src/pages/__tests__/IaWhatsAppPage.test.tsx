@@ -96,4 +96,12 @@ describe('IaWhatsAppPage Component', () => {
     expect(screen.getByTestId('about-title')).toHaveTextContent('Quem é Aryaraj?');
     expect(screen.getByText(/Olá, me chamo Aryaraj, tenho 28 anos e sou natural de Fortaleza/i)).toBeInTheDocument();
   });
+
+  it('deve conter o rodapé oficial padronizado com CNPJ e links legais', () => {
+    render(<IaWhatsAppPage />);
+
+    expect(screen.getByText(/60\.204\.548 ARYARAJ ALVES FERNANDES - CNPJ 60\.204\.548\/0001-85/i)).toBeInTheDocument();
+    expect(screen.getByText(/Política de Privacidade/i)).toBeInTheDocument();
+    expect(screen.getByText(/Termos de Uso/i)).toBeInTheDocument();
+  });
 });

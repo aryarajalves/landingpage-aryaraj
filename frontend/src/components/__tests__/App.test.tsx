@@ -49,6 +49,11 @@ describe('Componente Principal App e Roteamento', () => {
     expect(coproducaoBtn).toBeInTheDocument();
     expect(coproducaoBtn).toHaveAttribute('href', '/coproducao');
     expect(screen.getByText(/Co-Produção Tecnológica/i)).toBeInTheDocument();
+
+    // Rodapé oficial no Linktree
+    expect(screen.getByText(/60\.204\.548 ARYARAJ ALVES FERNANDES - CNPJ 60\.204\.548\/0001-85/i)).toBeInTheDocument();
+    expect(screen.getByText(/Política de Privacidade/i)).toBeInTheDocument();
+    expect(screen.getByText(/Termos de Uso/i)).toBeInTheDocument();
   });
 
   it('deve navegar para a página de Aplicativos ao clicar no botão correspondente do Linktree', () => {

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import '../estilos/LinktreePage.css';
 import { MessageSquareCode, ArrowRight, ShieldCheck, Bot, Smartphone, Handshake } from 'lucide-react';
 import { trackClick } from '../utils/tracking';
+import Footer from '../components/Footer';
 
 interface LinktreePageProps {
   onNavigate?: (path: string) => void;
@@ -151,11 +152,10 @@ const LinktreePage: React.FC<LinktreePageProps> = ({ onNavigate }) => {
             <ArrowRight size={20} />
           </a>
         </div>
-
-        <div className="linktree-footer">
-          <span>Aryaraj © {new Date().getFullYear()} • Soluções Oficiais Meta</span>
-        </div>
       </div>
+
+      {/* Rodapé Oficial Padronizado */}
+      <Footer />
     </div>
   );
 };

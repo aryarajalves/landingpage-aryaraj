@@ -83,4 +83,12 @@ describe('AppsInfoprodutoPage Component', () => {
     expect(screen.getByText(/Quer criar um/i)).toBeInTheDocument();
     expect(screen.getAllByText(/Aplicativo/i).length).toBeGreaterThan(0);
   });
+
+  it('deve conter o rodapé oficial padronizado com CNPJ e links legais', () => {
+    render(<AppsInfoprodutoPage />);
+
+    expect(screen.getByText(/60\.204\.548 ARYARAJ ALVES FERNANDES - CNPJ 60\.204\.548\/0001-85/i)).toBeInTheDocument();
+    expect(screen.getByText(/Política de Privacidade/i)).toBeInTheDocument();
+    expect(screen.getByText(/Termos de Uso/i)).toBeInTheDocument();
+  });
 });
