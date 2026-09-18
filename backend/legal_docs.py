@@ -1,8 +1,8 @@
 def get_html_layout(title: str, content_html: str) -> str:
     """
-    Retorna o esqueleto HTML estruturado com uma identidade visual premium (tema escuro),
-    incluindo fontes do Google Fonts (Outfit e Inter), gradientes de fundo,
-    efeito de glassmorphism e botão para retornar à página principal da Landing Page.
+    Retorna o esqueleto HTML estruturado com a mesma identidade visual clara/branca,
+    quente e elegante do site principal, incluindo fontes do Google Fonts (Outfit e Inter),
+    fundo acolhedor, card branco com borda sutil, alta legibilidade e botão para retornar à Home.
     """
     return f"""<!DOCTYPE html>
 <html lang="pt-BR">
@@ -13,15 +13,17 @@ def get_html_layout(title: str, content_html: str) -> str:
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {{
-            --bg-primary: #030712;
-            --bg-secondary: #0b0f19;
-            --bg-card: rgba(17, 24, 39, 0.7);
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
-            --color-cyan: #06b6d4;
-            --color-violet: #8b5cf6;
-            --border-color: rgba(255, 255, 255, 0.08);
-            --grad-primary: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-violet) 100%);
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #faf4e8;
+            --bg-card: #ffffff;
+            --text-primary: #1c1917;
+            --text-secondary: #4b5563;
+            --color-cyan: #0284c7;
+            --color-violet: #7c3aed;
+            --color-amber: #d97706;
+            --border-color: #e5e7eb;
+            --grad-primary: linear-gradient(135deg, #0284c7 0%, #7c3aed 100%);
+            --grad-warm: linear-gradient(180deg, #fdfbf7 0%, #fff8ee 35%, #fdf6ec 70%, #faf1e4 100%);
             --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
             --font-title: 'Outfit', sans-serif;
         }}
@@ -31,7 +33,8 @@ def get_html_layout(title: str, content_html: str) -> str:
             padding: 0;
         }}
         body {{
-            background-color: var(--bg-primary);
+            background-color: #fdfbf7;
+            background-image: var(--grad-warm);
             color: var(--text-primary);
             font-family: var(--font-sans);
             min-height: 100vh;
@@ -39,59 +42,34 @@ def get_html_layout(title: str, content_html: str) -> str:
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
             position: relative;
             overflow-x: hidden;
         }}
-        /* Background Glows */
-        .glow {{
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            filter: blur(120px);
-            z-index: -1;
-            pointer-events: none;
-            opacity: 0.15;
-        }}
-        .glow-purple {{
-            top: -100px;
-            left: -100px;
-            background: var(--color-violet);
-        }}
-        .glow-cyan {{
-            bottom: -100px;
-            right: -100px;
-            background: var(--color-cyan);
-        }}
         .container {{
             width: 100%;
-            max-width: 800px;
+            max-width: 840px;
             background: var(--bg-card);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-color);
             border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            padding: 44px;
+            box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.08), 0 10px 20px -5px rgba(0, 0, 0, 0.03);
         }}
         h1 {{
             font-family: var(--font-title);
-            font-size: 2.25rem;
+            font-size: 2.2rem;
             font-weight: 800;
             margin-bottom: 24px;
-            background: var(--grad-primary);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #111827;
+            letter-spacing: -0.02em;
         }}
         h2, h3 {{
             font-family: var(--font-title);
-            font-size: 1.35rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-top: 28px;
+            margin-top: 30px;
             margin-bottom: 12px;
-            color: var(--text-primary);
+            color: #1f2937;
         }}
         p {{
             line-height: 1.7;
@@ -100,47 +78,48 @@ def get_html_layout(title: str, content_html: str) -> str:
             font-size: 1rem;
         }}
         ul {{
-            margin-left: 20px;
+            margin-left: 24px;
             margin-bottom: 20px;
             color: var(--text-secondary);
         }}
         li {{
-            margin-bottom: 8px;
-            line-height: 1.6;
+            margin-bottom: 10px;
+            line-height: 1.65;
         }}
         .btn-back {{
             display: inline-flex;
             align-items: center;
             padding: 12px 24px;
             border-radius: 9999px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--border-color);
-            color: var(--text-primary);
+            background: #ffffff;
+            border: 1.5px solid #e2e8f0;
+            color: #1f2937;
             font-weight: 600;
+            font-size: 0.95rem;
             text-decoration: none;
-            margin-bottom: 30px;
-            transition: all 0.3s ease;
+            margin-bottom: 28px;
+            transition: all 0.25s ease;
             gap: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
         }}
         .btn-back:hover {{
-            background: rgba(255, 255, 255, 0.08);
-            border-color: rgba(255, 255, 255, 0.2);
+            background: #f8fafc;
+            border-color: #0284c7;
+            color: #0284c7;
             transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(2, 132, 199, 0.15);
         }}
         .footer-brand {{
             margin-top: 40px;
             text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
+            font-size: 0.88rem;
+            color: #4b5563;
             border-top: 1px solid var(--border-color);
-            padding-top: 20px;
+            padding-top: 24px;
         }}
     </style>
 </head>
 <body>
-    <div class="glow glow-purple"></div>
-    <div class="glow glow-cyan"></div>
-    
     <a href="/" class="btn-back">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
         Voltar para a Home
