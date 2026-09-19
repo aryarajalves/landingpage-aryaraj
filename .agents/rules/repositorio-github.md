@@ -6,7 +6,7 @@ trigger: always_on
 
 O repositório oficial do projeto é:
 
-**URL:** https://github.com/aryarajalves/zap-voice-api-oficial-clone.git
+**URL:** https://github.com/aryarajalves/landingpage-aryaraj.git
 
 **Protocolo Obrigatório:**
 1. Todo `git push` deve ser direcionado para este repositório.
