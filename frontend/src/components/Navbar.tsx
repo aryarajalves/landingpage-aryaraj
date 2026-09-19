@@ -13,7 +13,8 @@ import {
   MessageCircle, 
   Menu, 
   X,
-  MessageSquareCode
+  MessageSquareCode,
+  ArrowLeft
 } from 'lucide-react';
 import { WHATSAPP_LINK } from '../config';
 
@@ -114,26 +115,46 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    window.history.pushState(null, '', '/');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <header className="navbar-header" id="main-header">
       <div className="navbar-container">
-        {/* Brand / Logo */}
-        <a 
-          href="#inicio" 
-          onClick={(e) => scrollToSection(e, '#inicio')} 
-          className="nav-brand" 
-          id="nav-logo"
-        >
-          <div className="nav-brand-icon-wrapper">
-            <MessageSquareCode size={24} className="nav-brand-icon" />
-          </div>
-          <div className="nav-brand-texts">
-            <span className="nav-brand-title">
-              Aryaraj <span className="nav-brand-highlight">API</span>
-            </span>
-            <span className="nav-brand-subtitle">Oficial Meta & Automações</span>
-          </div>
-        </a>
+        {/* Left Action / Voltar para a Home */}
+        <div className="nav-left-group">
+          <a
+            href="/"
+            onClick={handleBackToHome}
+            className="btn-nav-back"
+            data-testid="btn-nav-back-home"
+            title="Voltar para a página inicial"
+          >
+            <ArrowLeft size={18} />
+            <span className="btn-nav-back-text">Início</span>
+          </a>
+
+          {/* Brand / Logo */}
+          <a 
+            href="#inicio" 
+            onClick={(e) => scrollToSection(e, '#inicio')} 
+            className="nav-brand" 
+            id="nav-logo"
+          >
+            <div className="nav-brand-icon-wrapper">
+              <MessageSquareCode size={24} className="nav-brand-icon" />
+            </div>
+            <div className="nav-brand-texts">
+              <span className="nav-brand-title">
+                Aryaraj <span className="nav-brand-highlight">API</span>
+              </span>
+              <span className="nav-brand-subtitle">Oficial Meta & Automações</span>
+            </div>
+          </a>
+        </div>
 
         {/* Desktop Navigation Links */}
         <nav className="nav-links-desktop" aria-label="Navegação principal">
@@ -198,6 +219,19 @@ export default function Navbar() {
               );
             })}
             <div className="mobile-menu-footer">
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setMobileMenuOpen(false);
+                  handleBackToHome(e);
+                }}
+                className="mobile-nav-link"
+                style={{ marginBottom: '8px', color: '#b45309', fontWeight: 600, background: '#fef3c7' }}
+              >
+                <ArrowLeft size={16} />
+                <span>Voltar aos Serviços (Início)</span>
+              </a>
               <a
                 href={WHATSAPP_LINK}
                 target="_blank"

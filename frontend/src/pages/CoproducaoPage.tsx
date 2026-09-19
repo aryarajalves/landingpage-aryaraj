@@ -16,7 +16,8 @@ import {
   ChevronDown,
   Send,
   Bot,
-  Video
+  Video,
+  ArrowLeft
 } from 'lucide-react';
 import { WHATSAPP_LINK } from '../config';
 import { trackClick } from '../utils/tracking';
@@ -63,20 +64,40 @@ const CoproducaoPage: React.FC = () => {
     document.title = 'Co-Produção Tecnológica';
   }, []);
 
+  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    trackClick('co_nav_back_home');
+    window.history.pushState(null, '', '/');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <div className="co-page" data-testid="coproducao-page">
       {/* Navbar */}
       <header className="co-navbar">
         <div className="container co-nav-container">
-          <a href="/" className="co-brand" onClick={() => trackClick('co_nav_logo')}>
-            <div className="co-brand-icon-box">
-              <Handshake size={22} />
-            </div>
-            <div className="co-brand-text">
-              <h3>Aryaraj Tech</h3>
-              <span>Co-Produção Tecnológica</span>
-            </div>
-          </a>
+          <div className="co-nav-left-group">
+            <a
+              href="/"
+              onClick={handleBackToHome}
+              className="btn-co-back"
+              data-testid="btn-co-back-home"
+              title="Voltar para a página inicial"
+            >
+              <ArrowLeft size={18} />
+              <span className="btn-co-back-text">Início</span>
+            </a>
+
+            <a href="/" className="co-brand" onClick={() => trackClick('co_nav_logo')}>
+              <div className="co-brand-icon-box">
+                <Handshake size={22} />
+              </div>
+              <div className="co-brand-text">
+                <h3>Aryaraj Tech</h3>
+                <span>Co-Produção Tecnológica</span>
+              </div>
+            </a>
+          </div>
 
           <nav className="co-nav-links">
             <a href="#como-funciona" className="co-nav-link">Como Funciona</a>

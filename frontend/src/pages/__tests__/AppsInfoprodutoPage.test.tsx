@@ -91,4 +91,15 @@ describe('AppsInfoprodutoPage Component', () => {
     expect(screen.getByText(/Política de Privacidade/i)).toBeInTheDocument();
     expect(screen.getByText(/Termos de Uso/i)).toBeInTheDocument();
   });
+
+  it('deve conter o botão de voltar para a página inicial na barra superior à esquerda da marca', () => {
+    render(<AppsInfoprodutoPage />);
+    const backBtn = screen.getByTestId('btn-app-back-home');
+    expect(backBtn).toBeInTheDocument();
+    expect(backBtn).toHaveAttribute('href', '/');
+    expect(backBtn).toHaveTextContent('Início');
+
+    fireEvent.click(backBtn);
+    expect(window.location.pathname).toBe('/');
+  });
 });

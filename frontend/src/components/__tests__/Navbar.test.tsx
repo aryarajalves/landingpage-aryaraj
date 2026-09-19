@@ -56,4 +56,16 @@ describe('Componente Navbar', () => {
     fireEvent.click(toggleBtn);
     expect(screen.queryByTestId('mobile-menu-dropdown')).not.toBeInTheDocument();
   });
+
+  it('deve exibir o botão de voltar para a página inicial na barra superior à esquerda da marca', () => {
+    render(<Navbar />);
+    const backBtn = screen.getByTestId('btn-nav-back-home');
+    expect(backBtn).toBeInTheDocument();
+    expect(backBtn).toHaveAttribute('href', '/');
+    expect(backBtn).toHaveTextContent('Início');
+
+    // Ao clicar, deve prevenir o reload e acionar popstate para /
+    fireEvent.click(backBtn);
+    expect(window.location.pathname).toBe('/');
+  });
 });

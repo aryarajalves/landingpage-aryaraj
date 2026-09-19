@@ -15,7 +15,8 @@ import {
   MessageCircle,
   HelpCircle,
   Clock,
-  ChevronDown
+  ChevronDown,
+  ArrowLeft
 } from 'lucide-react';
 import { WHATSAPP_LINK } from '../config';
 import { trackClick } from '../utils/tracking';
@@ -109,20 +110,40 @@ const IaWhatsAppPage: React.FC = () => {
     document.title = 'Agente IA';
   }, []);
 
+  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    trackClick('ia_nav_back_home');
+    window.history.pushState(null, '', '/');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <div className="ia-page" data-testid="ia-whatsapp-page">
       {/* Navbar Minimalista */}
       <header className="ia-navbar">
         <div className="container ia-nav-container">
-          <a href="/" className="ia-brand" onClick={() => trackClick('ia_nav_logo')}>
-            <div className="ia-brand-icon-box">
-              <Bot size={22} />
-            </div>
-            <div className="ia-brand-text">
-              <h3>Aryaraj AI</h3>
-              <span>Agentes de WhatsApp</span>
-            </div>
-          </a>
+          <div className="ia-nav-left-group">
+            <a
+              href="/"
+              onClick={handleBackToHome}
+              className="btn-ia-back"
+              data-testid="btn-ia-back-home"
+              title="Voltar para a página inicial"
+            >
+              <ArrowLeft size={18} />
+              <span className="btn-ia-back-text">Início</span>
+            </a>
+
+            <a href="/" className="ia-brand" onClick={() => trackClick('ia_nav_logo')}>
+              <div className="ia-brand-icon-box">
+                <Bot size={22} />
+              </div>
+              <div className="ia-brand-text">
+                <h3>Aryaraj AI</h3>
+                <span>Agentes de WhatsApp</span>
+              </div>
+            </a>
+          </div>
 
           <nav className="ia-nav-links">
             <a href="#como-funciona" className="ia-nav-link">Como Funciona</a>

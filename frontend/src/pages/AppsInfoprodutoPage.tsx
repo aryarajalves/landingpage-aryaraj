@@ -14,7 +14,8 @@ import {
   MessageCircle,
   BarChart3,
   HelpCircle,
-  ChevronDown
+  ChevronDown,
+  ArrowLeft
 } from 'lucide-react';
 import { WHATSAPP_LINK } from '../config';
 import { trackClick } from '../utils/tracking';
@@ -56,20 +57,40 @@ const AppsInfoprodutoPage: React.FC = () => {
     document.title = 'Aplicativos para Infoproduto';
   }, []);
 
+  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    trackClick('app_nav_back_home');
+    window.history.pushState(null, '', '/');
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <div className="app-page" data-testid="apps-infoproduto-page">
       {/* Navbar */}
       <header className="app-navbar">
         <div className="container app-nav-container">
-          <a href="/" className="app-brand" onClick={() => trackClick('app_nav_logo')}>
-            <div className="app-brand-icon-box">
-              <Smartphone size={22} />
-            </div>
-            <div className="app-brand-text">
-              <h3>Aryaraj Apps</h3>
-              <span>Tecnologia para Infoprodutos</span>
-            </div>
-          </a>
+          <div className="app-nav-left-group">
+            <a
+              href="/"
+              onClick={handleBackToHome}
+              className="btn-app-back"
+              data-testid="btn-app-back-home"
+              title="Voltar para a página inicial"
+            >
+              <ArrowLeft size={18} />
+              <span className="btn-app-back-text">Início</span>
+            </a>
+
+            <a href="/" className="app-brand" onClick={() => trackClick('app_nav_logo')}>
+              <div className="app-brand-icon-box">
+                <Smartphone size={22} />
+              </div>
+              <div className="app-brand-text">
+                <h3>Aryaraj Apps</h3>
+                <span>Tecnologia para Infoprodutos</span>
+              </div>
+            </a>
+          </div>
 
           <nav className="app-nav-links">
             <a href="#diagnostico" className="app-nav-link">Diagnóstico</a>
