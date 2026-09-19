@@ -57,11 +57,15 @@ const AppsInfoprodutoPage: React.FC = () => {
     document.title = 'Aplicativos para Infoproduto';
   }, []);
 
-  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    trackClick('app_nav_back_home');
-    window.history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    trackClick('app_nav_back');
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
   };
 
   return (
@@ -72,13 +76,13 @@ const AppsInfoprodutoPage: React.FC = () => {
           <div className="app-nav-left-group">
             <a
               href="/"
-              onClick={handleBackToHome}
+              onClick={handleBack}
               className="btn-app-back"
               data-testid="btn-app-back-home"
-              title="Voltar para a página inicial"
+              title="Voltar para a página anterior"
             >
               <ArrowLeft size={18} />
-              <span className="btn-app-back-text">Início</span>
+              <span className="btn-app-back-text">Voltar</span>
             </a>
 
             <a href="/" className="app-brand" onClick={() => trackClick('app_nav_logo')}>

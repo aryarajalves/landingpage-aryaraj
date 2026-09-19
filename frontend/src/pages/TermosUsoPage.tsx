@@ -12,9 +12,11 @@ const TermosUsoPage: React.FC<TermosUsoPageProps> = ({ onNavigate }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const handleBackHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (onNavigate) {
+    if (window.history.length > 1) {
+      window.history.back();
+    } else if (onNavigate) {
       onNavigate('/');
     } else {
       window.history.pushState(null, '', '/');
@@ -24,9 +26,9 @@ const TermosUsoPage: React.FC<TermosUsoPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="legal-wrapper" data-testid="termos-uso-page">
-      <a href="/" onClick={handleBackHome} className="legal-btn-back" data-testid="btn-voltar-home">
+      <a href="/" onClick={handleBack} className="legal-btn-back" data-testid="btn-voltar-home">
         <ArrowLeft size={18} />
-        <span>Voltar para a Home</span>
+        <span>Voltar</span>
       </a>
 
       <div className="legal-card">

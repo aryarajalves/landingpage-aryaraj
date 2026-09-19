@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import IaWhatsAppPage from '../IaWhatsAppPage';
 
 describe('IaWhatsAppPage Component', () => {
@@ -105,14 +105,17 @@ describe('IaWhatsAppPage Component', () => {
     expect(screen.getByText(/Termos de Uso/i)).toBeInTheDocument();
   });
 
-  it('deve conter o botão de voltar para a página inicial na barra superior à esquerda da marca', () => {
+  it('deve conter o botão de voltar na barra superior à esquerda da marca e retornar no histórico', () => {
+    Object.defineProperty(window.history, 'length', { value: 3, configurable: true });
+    const backSpy = vi.spyOn(window.history, 'back').mockImplementation(() => {});
     render(<IaWhatsAppPage />);
     const backBtn = screen.getByTestId('btn-ia-back-home');
     expect(backBtn).toBeInTheDocument();
     expect(backBtn).toHaveAttribute('href', '/');
-    expect(backBtn).toHaveTextContent('Início');
+    expect(backBtn).toHaveTextContent('Voltar');
 
     fireEvent.click(backBtn);
-    expect(window.location.pathname).toBe('/');
+    expect(backSpy).toHaveBeenCalled();
+    backSpy.mockRestore();
   });
 });

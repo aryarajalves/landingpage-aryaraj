@@ -110,11 +110,15 @@ const IaWhatsAppPage: React.FC = () => {
     document.title = 'Agente IA';
   }, []);
 
-  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    trackClick('ia_nav_back_home');
-    window.history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    trackClick('ia_nav_back');
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
   };
 
   return (
@@ -125,13 +129,13 @@ const IaWhatsAppPage: React.FC = () => {
           <div className="ia-nav-left-group">
             <a
               href="/"
-              onClick={handleBackToHome}
+              onClick={handleBack}
               className="btn-ia-back"
               data-testid="btn-ia-back-home"
-              title="Voltar para a página inicial"
+              title="Voltar para a página anterior"
             >
               <ArrowLeft size={18} />
-              <span className="btn-ia-back-text">Início</span>
+              <span className="btn-ia-back-text">Voltar</span>
             </a>
 
             <a href="/" className="ia-brand" onClick={() => trackClick('ia_nav_logo')}>

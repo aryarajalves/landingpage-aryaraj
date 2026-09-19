@@ -115,26 +115,30 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    window.history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
   };
 
   return (
     <header className="navbar-header" id="main-header">
       <div className="navbar-container">
-        {/* Left Action / Voltar para a Home */}
+        {/* Left Action / Voltar para a página anterior */}
         <div className="nav-left-group">
           <a
             href="/"
-            onClick={handleBackToHome}
+            onClick={handleBack}
             className="btn-nav-back"
             data-testid="btn-nav-back-home"
-            title="Voltar para a página inicial"
+            title="Voltar para a página anterior"
           >
             <ArrowLeft size={18} />
-            <span className="btn-nav-back-text">Início</span>
+            <span className="btn-nav-back-text">Voltar</span>
           </a>
 
           {/* Brand / Logo */}
@@ -224,13 +228,13 @@ export default function Navbar() {
                 onClick={(e) => {
                   e.preventDefault();
                   setMobileMenuOpen(false);
-                  handleBackToHome(e);
+                  handleBack(e);
                 }}
                 className="mobile-nav-link"
                 style={{ marginBottom: '8px', color: '#b45309', fontWeight: 600, background: '#fef3c7' }}
               >
                 <ArrowLeft size={16} />
-                <span>Voltar aos Serviços (Início)</span>
+                <span>Voltar</span>
               </a>
               <a
                 href={WHATSAPP_LINK}

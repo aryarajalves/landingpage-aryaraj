@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import Navbar from '../Navbar';
 import { WHATSAPP_LINK } from '../../config';
 
@@ -57,15 +57,17 @@ describe('Componente Navbar', () => {
     expect(screen.queryByTestId('mobile-menu-dropdown')).not.toBeInTheDocument();
   });
 
-  it('deve exibir o botão de voltar para a página inicial na barra superior à esquerda da marca', () => {
+  it('deve exibir o botão de voltar na barra superior à esquerda da marca e retornar no histórico', () => {
+    Object.defineProperty(window.history, 'length', { value: 3, configurable: true });
+    const backSpy = vi.spyOn(window.history, 'back').mockImplementation(() => {});
     render(<Navbar />);
     const backBtn = screen.getByTestId('btn-nav-back-home');
     expect(backBtn).toBeInTheDocument();
     expect(backBtn).toHaveAttribute('href', '/');
-    expect(backBtn).toHaveTextContent('Início');
+    expect(backBtn).toHaveTextContent('Voltar');
 
-    // Ao clicar, deve prevenir o reload e acionar popstate para /
     fireEvent.click(backBtn);
-    expect(window.location.pathname).toBe('/');
+    expect(backSpy).toHaveBeenCalled();
+    backSpy.mockRestore();
   });
 });

@@ -64,11 +64,15 @@ const CoproducaoPage: React.FC = () => {
     document.title = 'Co-Produção Tecnológica';
   }, []);
 
-  const handleBackToHome = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const handleBack = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    trackClick('co_nav_back_home');
-    window.history.pushState(null, '', '/');
-    window.dispatchEvent(new PopStateEvent('popstate'));
+    trackClick('co_nav_back');
+    if (window.history.length > 1) {
+      window.history.back();
+    } else {
+      window.history.pushState(null, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
   };
 
   return (
@@ -79,13 +83,13 @@ const CoproducaoPage: React.FC = () => {
           <div className="co-nav-left-group">
             <a
               href="/"
-              onClick={handleBackToHome}
+              onClick={handleBack}
               className="btn-co-back"
               data-testid="btn-co-back-home"
-              title="Voltar para a página inicial"
+              title="Voltar para a página anterior"
             >
               <ArrowLeft size={18} />
-              <span className="btn-co-back-text">Início</span>
+              <span className="btn-co-back-text">Voltar</span>
             </a>
 
             <a href="/" className="co-brand" onClick={() => trackClick('co_nav_logo')}>
