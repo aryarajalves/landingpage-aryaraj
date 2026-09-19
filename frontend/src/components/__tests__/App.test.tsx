@@ -194,6 +194,7 @@ describe('Componente Principal App e Roteamento', () => {
 
     const { container } = render(<App />);
     expect(container.querySelector('.page-api-oficial')).toBeInTheDocument();
+    expect(document.title).toBe('Api Oficial');
     expect(screen.getAllByText(/Aryaraj/i).length).toBeGreaterThan(0);
   });
 

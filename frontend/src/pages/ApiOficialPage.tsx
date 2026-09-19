@@ -19,6 +19,8 @@ import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
 const ApiOficialPage: React.FC = () => {
   React.useEffect(() => {
+    document.title = 'Api Oficial';
+
     if (window.location.hash) {
       const id = window.location.hash.replace('#', '');
       const element = document.getElementById(id);
