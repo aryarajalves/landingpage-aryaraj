@@ -48,8 +48,12 @@ class LoginRequest(BaseModel):
     username: str
     password: str
 
+class VisitRequest(BaseModel):
+    page_path: str = "/"
+
 class ClickRequest(BaseModel):
     button_id: str
+    page_path: str = "/"
 
 # Helpers de Autenticação JWT
 def create_jwt_token(username: str) -> str:
@@ -128,23 +132,24 @@ def get_termos_uso(request: Request):
 
 @app.post("/api/track/visit")
 @limiter.limit("50/minute")
-def track_visit(request: Request):
+def track_visit(request: Request, visit_data: VisitRequest = None):
     """
-    Registra uma nova visualização de página com o IP e User-Agent do cliente.
+    Registra uma nova visualização de página com o IP, User-Agent e a página acessada.
     """
     client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown")
     user_agent = request.headers.get("user-agent", "unknown")
-    save_visit(client_ip, user_agent)
+    page_path = visit_data.page_path if visit_data and visit_data.page_path else "/"
+    save_visit(client_ip, user_agent, page_path)
     return {"status": "success", "message": "Visita registrada com sucesso."}
 
 @app.post("/api/track/click")
 @limiter.limit("50/minute")
 def track_click(request: Request, click_data: ClickRequest):
     """
-    Registra um clique em botão identificando qual botão foi acionado.
+    Registra um clique em botão identificando qual botão foi acionado e em qual página.
     """
     client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown")
-    save_click(click_data.button_id, client_ip)
+    save_click(click_data.button_id, client_ip, click_data.page_path or "/")
     return {"status": "success", "message": f"Clique no botão '{click_data.button_id}' registrado."}
 
 # --- Rotas Administrativas ---

@@ -4,6 +4,8 @@ import ApiOficialPage from './pages/ApiOficialPage';
 import IaWhatsAppPage from './pages/IaWhatsAppPage';
 import AppsInfoprodutoPage from './pages/AppsInfoprodutoPage';
 import CoproducaoPage from './pages/CoproducaoPage';
+import TermosUsoPage from './pages/TermosUsoPage';
+import PoliticaPrivacidadePage from './pages/PoliticaPrivacidadePage';
 import AdminPanel from './components/AdminPanel';
 import { API_URL } from './config';
 
@@ -35,7 +37,13 @@ function App() {
 
     const trackVisit = async () => {
       try {
-        await fetch(`${API_URL}/api/track/visit`, { method: 'POST' });
+        await fetch(`${API_URL}/api/track/visit`, { 
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ page_path: currentPath || '/' })
+        });
       } catch (error) {
         console.error("Falha ao registrar visita de rastreamento:", error);
       }
@@ -52,6 +60,16 @@ function App() {
   // Rota Inicial (/) -> Linktree solicitada
   if (currentPath === '/' || currentPath === '') {
     return <LinktreePage onNavigate={navigate} />;
+  }
+
+  // Termos de Uso (/termos-uso)
+  if (currentPath === '/termos-uso' || currentPath === '/termos-uso/') {
+    return <TermosUsoPage onNavigate={navigate} />;
+  }
+
+  // Política de Privacidade (/politica-privacidade)
+  if (currentPath === '/politica-privacidade' || currentPath === '/politica-privacidade/') {
+    return <PoliticaPrivacidadePage onNavigate={navigate} />;
   }
 
   // Slug da API Oficial (/apioficial)

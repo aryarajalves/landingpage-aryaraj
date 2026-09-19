@@ -43,6 +43,7 @@ def init_db():
                     id SERIAL PRIMARY KEY,
                     ip_address VARCHAR(45),
                     user_agent TEXT,
+                    page_path VARCHAR(100) DEFAULT '/',
                     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
             """)
@@ -51,9 +52,13 @@ def init_db():
                     id SERIAL PRIMARY KEY,
                     button_id VARCHAR(50),
                     ip_address VARCHAR(45),
+                    page_path VARCHAR(100) DEFAULT '/',
                     timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
             """)
+            # Garante a existência da coluna se a tabela já existia sem ela
+            cur.execute("ALTER TABLE visits ADD COLUMN IF NOT EXISTS page_path VARCHAR(100) DEFAULT '/';")
+            cur.execute("ALTER TABLE clicks ADD COLUMN IF NOT EXISTS page_path VARCHAR(100) DEFAULT '/';")
             conn.commit()
             logger.info("Tabelas do PostgreSQL inicializadas com sucesso!")
     except Exception as e:
@@ -62,16 +67,16 @@ def init_db():
     finally:
         conn.close()
 
-def save_visit(ip_address: str, user_agent: str):
+def save_visit(ip_address: str, user_agent: str, page_path: str = "/"):
     """
-    Insere uma nova visita no banco de dados.
+    Insere uma nova visita no banco de dados com a página visitada.
     """
     conn = get_db_connection()
     try:
         with conn.cursor() as cur:
             cur.execute(
-                "INSERT INTO visits (ip_address, user_agent) VALUES (%s, %s)",
-                (ip_address, user_agent)
+                "INSERT INTO visits (ip_address, user_agent, page_path) VALUES (%s, %s, %s)",
+                (ip_address, user_agent, page_path or "/")
             )
             conn.commit()
     except Exception as e:
@@ -80,16 +85,16 @@ def save_visit(ip_address: str, user_agent: str):
     finally:
         conn.close()
 
-def save_click(button_id: str, ip_address: str):
+def save_click(button_id: str, ip_address: str, page_path: str = "/"):
     """
-    Insere um clique de botão no banco de dados.
+    Insere um clique de botão no banco de dados com a página de origem.
     """
     conn = get_db_connection()
     try:
         with conn.cursor() as cur:
             cur.execute(
-                "INSERT INTO clicks (button_id, ip_address) VALUES (%s, %s)",
-                (button_id, ip_address)
+                "INSERT INTO clicks (button_id, ip_address, page_path) VALUES (%s, %s, %s)",
+                (button_id, ip_address, page_path or "/")
             )
             conn.commit()
     except Exception as e:
@@ -101,13 +106,14 @@ def save_click(button_id: str, ip_address: str):
 def get_aggregated_stats(period: str):
     """
     Retorna estatísticas agrupadas de visitas e cliques dependendo do período (day, week, month, year).
-    Retorna também os cliques individuais de cada botão.
+    Retorna também os cliques individuais de cada botão e as visitas agrupadas por página.
     """
     conn = get_db_connection()
     stats = {
         "visits": [],
         "clicks": [],
         "button_distribution": {},
+        "page_distribution": {},
         "totals": {"visits": 0, "clicks": 0}
     }
     
@@ -163,9 +169,20 @@ def get_aggregated_stats(period: str):
                 SELECT button_id, COUNT(*) as value
                 FROM clicks
                 GROUP BY button_id
+                ORDER BY value DESC
             """)
             for row in cur.fetchall():
                 stats["button_distribution"][row["button_id"]] = row["value"]
+
+            # 5. Distribuição de visitas por página
+            cur.execute("""
+                SELECT COALESCE(NULLIF(page_path, ''), '/') as page, COUNT(*) as value
+                FROM visits
+                GROUP BY page
+                ORDER BY value DESC
+            """)
+            for row in cur.fetchall():
+                stats["page_distribution"][row["page"]] = row["value"]
 
     except Exception as e:
         logger.error(f"Erro ao carregar estatísticas agregadas ({period}): {e}")

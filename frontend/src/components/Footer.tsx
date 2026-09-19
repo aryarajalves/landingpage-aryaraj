@@ -1,24 +1,35 @@
 import React from 'react';
 import '../estilos/Footer.css';
-import { API_URL } from '../config';
 
-export default function Footer() {
+interface FooterProps {
+  onNavigate?: (path: string) => void;
+}
+
+export default function Footer({ onNavigate }: FooterProps) {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, path: string) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate(path);
+    } else {
+      window.history.pushState(null, '', path);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+  };
+
   return (
     <footer className="footer">
       <div className="footer-links">
         <a
-          href={`${API_URL}/politica-privacidade`}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/politica-privacidade"
+          onClick={(e) => handleLinkClick(e, '/politica-privacidade')}
           className="footer-link"
           id="footer-privacy-link"
         >
           Política de Privacidade
         </a>
         <a
-          href={`${API_URL}/termos-uso`}
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/termos-uso"
+          onClick={(e) => handleLinkClick(e, '/termos-uso')}
           className="footer-link"
           id="footer-terms-link"
         >

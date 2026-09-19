@@ -26,12 +26,12 @@ def test_get_termos_uso():
     assert "isenção de responsabilidade" in response.text.lower()
 
 def test_track_visit():
-    response = client.post("/api/track/visit", headers={"User-Agent": "Pytest Agent"})
+    response = client.post("/api/track/visit", json={"page_path": "/apioficial"}, headers={"User-Agent": "Pytest Agent"})
     assert response.status_code == 200
     assert response.json()["status"] == "success"
 
 def test_track_click():
-    response = client.post("/api/track/click", json={"button_id": "test_button"})
+    response = client.post("/api/track/click", json={"button_id": "test_button", "page_path": "/apioficial"})
     assert response.status_code == 200
     assert response.json()["status"] == "success"
 
@@ -64,3 +64,4 @@ def test_admin_stats_authorized_success():
     assert "clicks" in response.json()
     assert "totals" in response.json()
     assert "button_distribution" in response.json()
+    assert "page_distribution" in response.json()

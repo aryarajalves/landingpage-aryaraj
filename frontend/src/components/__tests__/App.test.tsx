@@ -210,6 +210,30 @@ describe('Componente Principal App e Roteamento', () => {
     expect(screen.getByRole('link', { name: /Ir para a API Oficial/i })).toHaveAttribute('href', '/apioficial');
   });
 
+  it('deve renderizar a página de Termos de Uso na rota (/termos-uso)', () => {
+    window.location = {
+      ...originalLocation,
+      pathname: '/termos-uso',
+    } as any;
+
+    render(<App />);
+    expect(screen.getByTestId('termos-uso-page')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Termos de Serviço/i })).toBeInTheDocument();
+    expect(screen.getByTestId('btn-voltar-home')).toBeInTheDocument();
+  });
+
+  it('deve renderizar a página de Política de Privacidade na rota (/politica-privacidade)', () => {
+    window.location = {
+      ...originalLocation,
+      pathname: '/politica-privacidade',
+    } as any;
+
+    render(<App />);
+    expect(screen.getByTestId('politica-privacidade-page')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /Política de Privacidade/i })).toBeInTheDocument();
+    expect(screen.getByTestId('btn-voltar-home')).toBeInTheDocument();
+  });
+
   it('deve renderizar o login administrativo na rota (/admin)', () => {
     window.location = {
       ...originalLocation,

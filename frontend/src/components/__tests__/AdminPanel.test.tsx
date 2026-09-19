@@ -64,6 +64,7 @@ describe('Componente AdminPanel', () => {
       visits: [{ label: '2026-06-16', value: 10 }],
       clicks: [{ label: '2026-06-16', value: 2 }],
       button_distribution: { hero_cta: 2 },
+      page_distribution: { '/apioficial': 7, '/': 3 },
       totals: { visits: 10, clicks: 2 }
     };
 
@@ -94,6 +95,8 @@ describe('Componente AdminPanel', () => {
       expect(screen.getByText(/^Visualizações$/i)).toBeInTheDocument();
       expect(screen.getByText(/Cliques no WhatsApp/i)).toBeInTheDocument();
       expect(screen.getByText(/Taxa de Conversão/i)).toBeInTheDocument();
+      expect(screen.getByText(/Visitas por Página/i)).toBeInTheDocument();
+      expect(screen.getByText(/API Oficial do WhatsApp \(\/apioficial\)/i)).toBeInTheDocument();
       // Valida a conversão
       expect(screen.getByText('20.0%')).toBeInTheDocument(); // 2 cliques / 10 visitas = 20.0%
     });

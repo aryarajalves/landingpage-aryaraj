@@ -12,6 +12,7 @@ interface StatsData {
   visits: StatItem[];
   clicks: StatItem[];
   button_distribution: Record<string, number>;
+  page_distribution: Record<string, number>;
   totals: {
     visits: number;
     clicks: number;
@@ -355,6 +356,47 @@ export default function AdminPanel() {
             </div>
           </div>
 
+          {/* Distribuição por Páginas */}
+          <div className="glass distribution-box" id="stats-pages-distribution" style={{ marginBottom: '24px' }}>
+            <h3 className="chart-title">Visitas por Página</h3>
+
+            {statsData && statsData.page_distribution && Object.keys(statsData.page_distribution).length > 0 ? (
+              Object.entries(statsData.page_distribution).map(([pagePath, count]) => {
+                const totalVisits = statsData.totals.visits || 1;
+                const percent = `${((count / totalVisits) * 100).toFixed(0)}%`;
+
+                // Nomes amigáveis para as páginas
+                let friendlyPageName = pagePath;
+                if (pagePath === '/' || pagePath === '') friendlyPageName = 'Linktree Inicial (/)';
+                else if (pagePath === '/apioficial' || pagePath === '/apioficial/') friendlyPageName = 'API Oficial do WhatsApp (/apioficial)';
+                else if (pagePath === '/agente-whatsapp' || pagePath === '/agente-whatsapp/' || pagePath === '/iawhatsapp') friendlyPageName = 'IA no WhatsApp (/agente-whatsapp)';
+                else if (pagePath === '/aplicativos' || pagePath === '/aplicativos/' || pagePath === '/apps-infoproduto') friendlyPageName = 'Criação de Aplicativos (/aplicativos)';
+                else if (pagePath === '/coproducao' || pagePath === '/coproducao/' || pagePath === '/co-producao') friendlyPageName = 'Co-Produção Tecnológica (/coproducao)';
+                else if (pagePath === '/termos-uso' || pagePath === '/termos-uso/') friendlyPageName = 'Termos de Uso (/termos-uso)';
+                else if (pagePath === '/politica-privacidade' || pagePath === '/politica-privacidade/') friendlyPageName = 'Política de Privacidade (/politica-privacidade)';
+
+                return (
+                  <div key={pagePath} className="dist-item">
+                    <div className="dist-header">
+                      <span className="dist-btn-name">{friendlyPageName}</span>
+                      <span className="dist-btn-count">{count} visitas ({percent})</span>
+                    </div>
+                    <div className="dist-progress-bar">
+                      <div
+                        className="dist-progress-fill"
+                        style={{ width: percent, background: 'linear-gradient(135deg, #0284c7 0%, #059669 100%)' }}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <div className="dist-empty-state">
+                Nenhuma visita por página registrada ainda.
+              </div>
+            )}
+          </div>
+
           {/* Distribuição por Botões */}
           <div className="glass distribution-box" id="stats-buttons-distribution">
             <h3 className="chart-title">Cliques por Botão</h3>
@@ -367,14 +409,33 @@ export default function AdminPanel() {
                 // Nomes amigáveis para os botões
                 let friendlyName = btnId;
                 if (btnId === 'hero_cta') friendlyName = 'Botão Hero Principal';
-                else if (btnId === 'bottom_cta') friendlyName = 'CTA de Contato Final';
-                else if (btnId === 'pricing_cta') friendlyName = 'Tabela Comparativa';
+                else if (btnId === 'hero_cta_to_entregaveis') friendlyName = 'Hero: Ativar Minha API Oficial';
+                else if (btnId === 'hero_phone_next_template') friendlyName = 'Hero Celular: Próximo Template';
+                else if (btnId === 'hero_phone_prev_template') friendlyName = 'Hero Celular: Template Anterior';
+                else if (btnId === 'bottom_cta') friendlyName = 'CTA de Contato Final (API Oficial)';
+                else if (btnId === 'floating_whatsapp') friendlyName = 'Botão Flutuante do WhatsApp';
+                else if (btnId === 'navbar_whatsapp_cta') friendlyName = 'Botão WhatsApp no Topo (Navbar)';
+                else if (btnId === 'linktree_btn_apioficial') friendlyName = 'Linktree: Botão API Oficial';
+                else if (btnId === 'linktree_btn_ia') friendlyName = 'Linktree: Botão IA no WhatsApp';
+                else if (btnId === 'linktree_btn_apps') friendlyName = 'Linktree: Botão Criar Aplicativo';
+                else if (btnId === 'linktree_btn_coproducao') friendlyName = 'Linktree: Botão Co-Produção';
+                else if (btnId === 'ia_hero_cta') friendlyName = 'IA WhatsApp: CTA do Hero';
+                else if (btnId === 'ia_bottom_cta') friendlyName = 'IA WhatsApp: CTA Final';
+                else if (btnId === 'ia_nav_whatsapp') friendlyName = 'IA WhatsApp: Botão Topo';
+                else if (btnId === 'app_hero_cta') friendlyName = 'Apps Infoproduto: CTA do Hero';
+                else if (btnId === 'app_bottom_cta') friendlyName = 'Apps Infoproduto: CTA Final';
+                else if (btnId === 'co_hero_cta') friendlyName = 'Co-Produção: CTA do Hero';
+                else if (btnId === 'co_bottom_cta') friendlyName = 'Co-Produção: CTA Final';
+                else if (btnId.startsWith('zapjords_showcase_tab_')) {
+                  const tabName = btnId.replace('zapjords_showcase_tab_', '');
+                  friendlyName = `ZapJords Aba: ${tabName.charAt(0).toUpperCase() + tabName.slice(1)}`;
+                }
 
                 return (
                   <div key={btnId} className="dist-item">
                     <div className="dist-header">
                       <span className="dist-btn-name">{friendlyName}</span>
-                      <span className="dist-btn-count">{count} ({percent})</span>
+                      <span className="dist-btn-count">{count} cliques ({percent})</span>
                     </div>
                     <div className="dist-progress-bar">
                       <div
