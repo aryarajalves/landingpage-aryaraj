@@ -124,4 +124,16 @@ describe('CoproducaoPage Component', () => {
     expect(backSpy).toHaveBeenCalled();
     backSpy.mockRestore();
   });
+
+  it('deve apontar para a seção de ferramentas inclusas (#entregas) e realizar scroll suave ao clicar', () => {
+    const scrollIntoViewMock = vi.fn();
+    window.HTMLElement.prototype.scrollIntoView = scrollIntoViewMock;
+
+    render(<CoproducaoPage />);
+    const heroBtn = screen.getByTestId('co-hero-cta-button');
+    expect(heroBtn).toHaveAttribute('href', '#entregas');
+
+    fireEvent.click(heroBtn);
+    expect(scrollIntoViewMock).toHaveBeenCalledWith({ behavior: 'smooth' });
+  });
 });

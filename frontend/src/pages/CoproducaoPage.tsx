@@ -129,11 +129,16 @@ const CoproducaoPage: React.FC = () => {
 
             <div className="co-hero-ctas">
               <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#entregas"
                 className="btn-co-primary"
-                onClick={() => trackClick('co_hero_cta')}
+                onClick={(e) => {
+                  e.preventDefault();
+                  trackClick('co_hero_cta');
+                  const target = document.getElementById('entregas');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
                 data-testid="co-hero-cta-button"
               >
                 <Handshake size={20} />
