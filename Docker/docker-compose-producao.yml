@@ -10,7 +10,7 @@ services:
       args:
         # Passa a variável VITE_API_URL em tempo de build para caminhos relativos ou específicos
         - VITE_API_URL=${VITE_API_URL}
-    image: aryalvesfernandes/landingpageapioficial:1.0.5
+    image: aryalvesfernandes/landingpageapioficial:1.0.6
     hostname: "{{.Service.Name}}.{{.Task.Slot}}"
     networks:
       - network_swarm_public
