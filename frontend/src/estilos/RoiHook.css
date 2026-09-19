@@ -166,3 +166,26 @@
     font-size: 1.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .roi-box {
+    padding: 24px 14px;
+    border-radius: 18px;
+  }
+  .roi-title {
+    font-size: 1.45rem;
+  }
+  .roi-col-title {
+    font-size: 1.15rem;
+  }
+  .roi-card-item {
+    padding: 12px 14px;
+    font-size: 0.88rem;
+  }
+  .roi-savings-banner {
+    padding: 18px 12px;
+  }
+  .roi-savings-title {
+    font-size: 1.1rem;
+  }
+}

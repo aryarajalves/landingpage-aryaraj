@@ -132,3 +132,27 @@
     padding: 24px;
   }
 }
+
+@media (max-width: 480px) {
+  .comp-card {
+    padding: 20px 14px;
+    border-radius: 16px;
+  }
+  .comp-header {
+    gap: 10px;
+  }
+  .comp-header-title-danger,
+  .comp-header-title-safe {
+    font-size: 1.2rem;
+  }
+  .comp-item {
+    font-size: 0.9rem;
+    gap: 10px;
+  }
+  .badge-premium {
+    font-size: 0.68rem;
+    padding: 4px 28px;
+    right: -32px;
+    top: 16px;
+  }
+}

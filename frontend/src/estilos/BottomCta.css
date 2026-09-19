@@ -67,3 +67,20 @@
     font-size: 1.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .cta-container {
+    padding: 32px 14px;
+    border-radius: 18px;
+  }
+  .cta-title {
+    font-size: 1.45rem;
+  }
+  .cta-subtitle {
+    font-size: 0.92rem;
+  }
+  .scarcity-banner {
+    padding: 12px 12px;
+    font-size: 0.82rem;
+  }
+}

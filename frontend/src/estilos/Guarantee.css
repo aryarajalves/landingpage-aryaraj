@@ -61,3 +61,20 @@
     font-size: 1.35rem;
   }
 }
+
+@media (max-width: 480px) {
+  .guarantee-card {
+    padding: 24px 14px;
+    border-radius: 16px;
+  }
+  .guarantee-icon-wrapper {
+    width: 64px;
+    height: 64px;
+  }
+  .guarantee-title {
+    font-size: 1.2rem;
+  }
+  .guarantee-text {
+    font-size: 0.9rem;
+  }
+}

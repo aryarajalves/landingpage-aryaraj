@@ -452,6 +452,7 @@
   .ia-hero-grid {
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 40px;
   }
   .ia-badge {
     margin-left: auto;
@@ -462,5 +463,99 @@
   }
   .ia-hero-title {
     font-size: 2.4rem;
+  }
+  .ia-nav-links {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .ia-nav-container {
+    padding: 0 14px;
+  }
+  .btn-ia-back {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+  .ia-brand-icon-box {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+  }
+  .ia-brand-text h3 {
+    font-size: 0.95rem;
+  }
+  .ia-brand-text span {
+    display: none;
+  }
+
+  .ia-hero-section {
+    padding: 24px 0 44px;
+  }
+  .ia-hero-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .ia-hero-desc {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+  .ia-badge {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    margin-bottom: 16px;
+  }
+  .ia-hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .btn-ia-primary,
+  .btn-ia-outline {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+  }
+
+  .ia-phone-card {
+    width: 100%;
+    max-width: 330px;
+    border-width: 5px;
+    border-radius: 24px;
+  }
+
+  .ia-features-section,
+  .ia-how-section,
+  .ia-onboarding-section,
+  .ia-cta-section {
+    padding: 48px 0;
+  }
+
+  .ia-step-card {
+    padding: 22px 16px;
+  }
+
+  .ia-cta-box {
+    padding: 32px 16px;
+    border-radius: 20px;
+  }
+  .ia-cta-box h2 {
+    font-size: 1.55rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn-ia-back-text {
+    display: none;
+  }
+  .btn-ia-back {
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
   }
 }

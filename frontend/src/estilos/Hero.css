@@ -446,7 +446,8 @@
   .hero-layout {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 50px;
+    gap: 40px;
+    padding-top: 30px;
   }
 
   .hero-badge {
@@ -463,12 +464,130 @@
   }
 
   .hero-title {
-    font-size: 2.7rem;
+    font-size: 2.5rem;
   }
 
   .scarcity-banner {
     margin-left: auto;
     margin-right: auto;
     text-align: left;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-layout {
+    padding-top: 20px;
+    padding-bottom: 30px;
+    gap: 32px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.2rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .hero-desc {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 24px;
+  }
+
+  .hero-badge {
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    margin-bottom: 16px;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .hero-ctas .btn {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+  }
+
+  .hero-bullets {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .bullet-item {
+    font-size: 0.88rem;
+  }
+
+  .scarcity-banner {
+    padding: 12px 14px;
+    font-size: 0.82rem;
+    margin-bottom: 24px;
+  }
+
+  /* Phone Simulator no Mobile */
+  .phone-outer-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 330px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .phone-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 36px;
+    height: 36px;
+    background: rgba(15, 23, 42, 0.85);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .phone-nav-prev {
+    left: 6px;
+  }
+
+  .phone-nav-next {
+    right: 6px;
+  }
+
+  .phone-nav-btn:hover {
+    transform: translateY(-50%) scale(1.08);
+  }
+
+  .phone-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-height: 480px;
+    border-width: 6px;
+    border-radius: 28px;
+    box-shadow: 0 15px 35px -8px rgba(0, 0, 0, 0.45);
+  }
+
+  .phone-header {
+    padding: 10px 12px;
+  }
+
+  .chat-body {
+    padding: 10px 8px;
+  }
+
+  .bubble-content {
+    font-size: 0.82rem;
+  }
+
+  .bubble-title {
+    font-size: 0.92rem;
+  }
+
+  .template-action-btn {
+    padding: 8px 10px;
+    font-size: 0.78rem;
   }
 }

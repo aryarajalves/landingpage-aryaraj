@@ -110,3 +110,40 @@
     font-size: 1.75rem;
   }
 }
+
+@media (max-width: 480px) {
+  .legal-wrapper {
+    padding: 24px 12px 40px;
+  }
+
+  .legal-btn-back {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .legal-card {
+    padding: 20px 14px;
+    border-radius: 14px;
+  }
+
+  .legal-title {
+    font-size: 1.45rem;
+    margin-bottom: 16px;
+  }
+
+  .legal-section-title {
+    font-size: 1.1rem;
+    margin-top: 20px;
+  }
+
+  .legal-paragraph,
+  .legal-list-item {
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+
+  .legal-list {
+    margin-left: 16px;
+  }
+}

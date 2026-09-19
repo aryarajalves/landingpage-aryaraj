@@ -255,3 +255,29 @@
     gap: 8px;
   }
 }
+
+@media (max-width: 480px) {
+  .showcase-title {
+    font-size: 1.55rem;
+  }
+  .showcase-display-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+    gap: 18px;
+  }
+  .showcase-screen-title {
+    font-size: 1.15rem;
+  }
+  .showcase-screen-desc {
+    font-size: 0.88rem;
+  }
+  .browser-mockup {
+    border-radius: 12px;
+  }
+  .browser-address-bar {
+    display: none;
+  }
+  .browser-header {
+    padding: 8px 12px;
+  }
+}

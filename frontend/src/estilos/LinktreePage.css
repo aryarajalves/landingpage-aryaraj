@@ -184,3 +184,37 @@
   align-items: center;
   gap: 6px;
 }
+
+@media (max-width: 480px) {
+  .linktree-container {
+    padding: 24px 0 20px 0;
+  }
+  .linktree-card {
+    width: calc(100% - 24px);
+    padding: 32px 16px;
+    border-radius: 22px;
+  }
+  .linktree-avatar {
+    width: 68px;
+    height: 68px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .linktree-title {
+    font-size: 1.55rem;
+  }
+  .linktree-desc {
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+  }
+  .linktree-btn {
+    padding: 13px 14px;
+    gap: 8px;
+  }
+  .linktree-btn-title {
+    font-size: 0.94rem;
+  }
+  .linktree-btn-sub {
+    font-size: 0.74rem;
+  }
+}

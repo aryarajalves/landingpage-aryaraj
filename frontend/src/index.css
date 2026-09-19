@@ -46,26 +46,40 @@ html {
   min-height: 100vh;
   color: var(--text-primary);
   font-family: var(--font-sans);
+  overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
 }
 
 body {
   overflow-x: hidden;
+  max-width: 100vw;
+  width: 100%;
+  position: relative;
 }
 
 /* Base styles for #root to support full-width modern layout */
 #root {
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   margin: 0;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
   font-weight: 700;
   letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+p, span, a, button {
+  overflow-wrap: break-word;
 }
 
 p {
@@ -250,5 +264,25 @@ p {
   .btn {
     padding: 12px 24px;
     font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  .section {
+    padding: 48px 0;
+  }
+  .section-title {
+    font-size: clamp(1.6rem, 5.5vw, 1.95rem);
+  }
+  .section-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 36px;
+  }
+  .btn {
+    padding: 12px 20px;
+    font-size: 0.92rem;
   }
 }

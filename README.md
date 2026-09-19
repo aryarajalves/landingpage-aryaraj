@@ -70,12 +70,12 @@ docker exec landing_page_backend pytest
 ## 📦 Imagem de Produção Docker Hub
 
 - **Repositório:** `aryalvesfernandes/landingpageapioficial`
-- **Versão Corrente:** `1.0.6`
+- **Versão Corrente:** `1.0.7`
 - **Comando de Pull:**
   ```bash
-  docker pull aryalvesfernandes/landingpageapioficial:1.0.6
+  docker pull aryalvesfernandes/landingpageapioficial:1.0.7
   ```
 
 ---
 
-Aryaraj Serviços v1.0.6 © 2026 • Tecnologia para Infoprodutos e Negócios Digitais
+Aryaraj Serviços v1.0.7 © 2026 • Tecnologia para Infoprodutos e Negócios Digitais (100% Responsivo Mobile)
