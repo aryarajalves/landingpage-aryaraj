@@ -12,7 +12,7 @@ describe('AppsInfoprodutoPage Component', () => {
     expect(screen.getByText(/Aplicativo Perfeito/i)).toBeInTheDocument();
     expect(screen.getAllByText(/para o seu Infoproduto/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Analisamos a fundo o seu negócio e a sua audiência/i)).toBeInTheDocument();
-    expect(screen.getByTestId('app-hero-cta-button')).toBeInTheDocument();
+    expect(screen.queryByTestId('app-hero-cta-button')).not.toBeInTheDocument();
   });
 
   it('deve exibir o card de mockup evidenciando Dor Identificada e Solução no App', () => {

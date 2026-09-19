@@ -120,20 +120,6 @@ const AppsInfoprodutoPage: React.FC = () => {
               Não criamos apenas um app por criar. <strong>Analisamos a fundo o seu negócio e a sua audiência</strong> para descobrir qual dor latente eles enfrentam e qual tipo de ferramenta ou produto eles <strong>realmente desejam usar e pagar todos os meses</strong>.
             </p>
 
-            <div className="app-hero-ctas">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-app-primary"
-                onClick={() => trackClick('app_hero_cta')}
-                data-testid="app-hero-cta-button"
-              >
-                <Search size={20} />
-                <span>Quero Analisar Meu Infoproduto</span>
-              </a>
-            </div>
-
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', color: '#44403c', fontSize: '0.94rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <CheckCircle2 size={18} style={{ color: '#0284c7' }} />
