@@ -7,7 +7,7 @@ services:
     build:
       context: ..
       dockerfile: Docker/Dockerfile.producao
-    image: aryalvesfernandes/landingpageapioficial:1.0.6
+    image: aryalvesfernandes/landingpageapioficial:1.0.7
     hostname: "{{.Service.Name}}.{{.Task.Slot}}"
     networks:
       - network_swarm_public
